@@ -28,3 +28,11 @@ TEST_F(AluTest, Addition) {
 TEST_F(AluTest, Subtraction) {
     ASSERT_EQ(do_alu(Sub, 10, 5), 5);
 }
+
+TEST_F(AluTest, And) {
+    ASSERT_EQ(do_alu(And, 0b110, 0b101), 0b100);
+}
+
+TEST_F(AluTest, Or) {
+    ASSERT_EQ(do_alu(Or, 0b1001, 0b1101), 0b1101);
+}
