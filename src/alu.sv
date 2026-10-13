@@ -1,5 +1,12 @@
+typedef enum [2:0] {
+  ALU_ADD = 0,
+  ALU_SUB = 1,
+  ALU_AND = 2,
+  ALU_OR  = 3
+} alu_op;
+
 module alu (
-    input  logic [2:0] op,
+    input  alu_op op,
     input  logic [7:0] a,
     input  logic [7:0] b,
     output logic [7:0] out
@@ -7,10 +14,11 @@ module alu (
 
   always_comb begin
     case (op)
-      0: out = a + b;
-      1: out = a - b;
-      2: out = a & b;
-      3: out = a | b;
+      ALU_ADD: out = a + b;
+      ALU_SUB: out = a - b;
+      ALU_AND: out = a & b;
+      ALU_OR: out = a | b;
+      default: out = 0;
     endcase
   end
 
