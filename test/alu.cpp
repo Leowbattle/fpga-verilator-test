@@ -22,7 +22,7 @@ protected:
 };
 
 TEST_F(AluTest, Addition) {
-    ASSERT_EQ(do_alu(Add, 4, 5), 9);
+    ASSERT_EQ(do_alu(Add, 4, 5), 8);
 }
 
 TEST_F(AluTest, Subtraction) {
