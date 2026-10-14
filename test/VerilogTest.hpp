@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
 #include "verilated.h"
+#include <gtest/gtest.h>
 
 // TODO figure out how to do VCD dump
 // https://www.itsembedded.com/dhd/verilator_1/
@@ -7,15 +7,16 @@
 // TODO cocotb/hardcaml like coroutine/effect based simulation api?
 // https://veripool.org/guide/latest/overview.html
 
-template <typename T>
-class VerilogTest : public testing::Test {
+template <typename T> class VerilogTest : public testing::Test {
 protected:
-    VerilogTest() {
+    VerilogTest()
+    {
         contextp = new VerilatedContext;
         dut = new T(contextp);
     }
 
-    ~VerilogTest() override {
+    ~VerilogTest() override
+    {
         delete dut;
         delete contextp;
     }
