@@ -10,7 +10,7 @@ protected:
     uint8_t do_alu(Alu_op op, uint8_t a, uint8_t b)
     {
         dut->op = static_cast<uint8_t>(op);
-        dut->a = a;
+        dut->a= a;
         dut->b = b;
         dut->eval();
         return dut->out;
