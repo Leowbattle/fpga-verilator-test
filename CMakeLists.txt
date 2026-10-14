@@ -17,10 +17,19 @@ FetchContent_MakeAvailable(googletest)
 find_package(verilator HINTS $ENV{VERILATOR_ROOT})
 
 file(GLOB TEST_SRC_FILES test/*.cpp)
-file(GLOB VERILOG_SRC_FILES src/*.sv)
 
+# One library, several verilated models: one verilate() call per testable unit.
+# Each call needs an explicit PREFIX so the generated V<prefix>.h name is
+# deterministic (otherwise it is guessed from the first source file).
 add_library(hdl)
-verilate(hdl TRACE TOP_MODULE alu SOURCES ${VERILOG_SRC_FILES})
+
+# Leaf modules, verilated standalone for unit testing.
+verilate(hdl TRACE PREFIX Valu TOP_MODULE alu SOURCES src/alu.sv)
+verilate(hdl TRACE PREFIX Vmx TOP_MODULE mx SOURCES src/mx.sv)
+
+# Example integration top. Its dependencies are listed before it: the `alu_op`
+# typedef declared at $unit scope in alu.sv must be visible when top.sv is parsed.
+verilate(hdl TRACE PREFIX Vtop TOP_MODULE top SOURCES src/alu.sv src/mx.sv src/top.sv)
 
 enable_testing()
 
