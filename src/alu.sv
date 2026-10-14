@@ -18,7 +18,6 @@ module alu (
       ALU_SUB: out = a - b;
       ALU_AND: out = a & b;
       ALU_OR:  out = a | b;
-      default: out = 0;
     endcase
   end
 
