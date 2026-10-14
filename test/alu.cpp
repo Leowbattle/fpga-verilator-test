@@ -5,7 +5,7 @@ enum class Alu_op : uint8_t {
     Add = 0,
     Sub = 1,
     And = 2,
-    Or = 3
+    Or = 4
 };
 
 using enum Alu_op;
