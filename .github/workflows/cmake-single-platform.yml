@@ -26,7 +26,9 @@ jobs:
       run: |
         curl -fsSL -o /tmp/verible.tar.gz \
           "https://github.com/chipsalliance/verible/releases/download/v0.0-4296-g0f262651/verible-v0.0-4296-g0f262651-linux-static-x86_64.tar.gz"
-        sudo tar -xzf /tmp/verible.tar.gz -C /usr/local --strip-components=1
+        sudo mkdir -p /opt/verible
+        sudo tar -xzf /tmp/verible.tar.gz -C /opt/verible --strip-components=1
+        echo "/opt/verible/bin" >> "$GITHUB_PATH"
 
     - name: Check formatting
       run: ./scripts/format.sh check
