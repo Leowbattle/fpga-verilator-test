@@ -11,9 +11,9 @@ case "$mode" in
     if [ -n "$cpp_files" ]; then
       clang-format --dry-run --Werror $cpp_files
     fi
-    if [ -n "$sv_files" ]; then
-      verible-verilog-format --verify $sv_files
-    fi
+    for f in $sv_files; do
+      verible-verilog-format --verify "$f"
+    done
     ;;
   fix)
     if [ -n "$cpp_files" ]; then
