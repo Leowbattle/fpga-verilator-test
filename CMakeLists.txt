@@ -13,8 +13,6 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# Required for vscode to detect include paths
-add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
 
 find_package(verilator HINTS $ENV{VERILATOR_ROOT})
 
