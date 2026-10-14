@@ -20,7 +20,7 @@ file(GLOB TEST_SRC_FILES test/*.cpp)
 file(GLOB VERILOG_SRC_FILES src/*.sv)
 
 add_library(hdl)
-verilate(hdl TRACE SOURCES ${VERILOG_SRC_FILES})
+verilate(hdl TRACE TOP_MODULE alu SOURCES ${VERILOG_SRC_FILES})
 
 enable_testing()
 
